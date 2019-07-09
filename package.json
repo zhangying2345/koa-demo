@@ -1,0 +1,25 @@
+{
+  "name": "my-koa-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangying2345/koa-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangying2345/koa-demo/issues"
+  },
+  "homepage": "https://github.com/zhangying2345/koa-demo#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0"
+  }
+}
