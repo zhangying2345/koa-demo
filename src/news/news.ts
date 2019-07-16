@@ -12,7 +12,18 @@ export class News {
         var results=[];
         
         return fetch(url)
+        // .then(res => res.json())
         .then(res => res.text())
+        .then(strHtml => {
+            var $=cheerio.load(strHtml);
+            $("#channel-all li").each((iten,i)=>{
+                console.log($(i
+                ).text());
+                results.push($(i).text());
+            });
+            return results;
+        })
+        
         // .then(body => console.log(body));
         // http.get(url, res => {
         //     res.on("data",function(chunk){

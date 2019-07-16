@@ -9,6 +9,8 @@ const news = new News();
 
 router.get('/', async (ctx, next) => {
     const newsBaiDu = await news.getNews();
+    console.log(newsBaiDu);
+    
     ctx.body = newsBaiDu;
 });
 

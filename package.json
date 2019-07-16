@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "build": "webpack"
+    "start": "npm run build && npm run developing",
+    "build": "node_modules/.bin/webpack",
+    "developing": "node dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,12 @@
   "homepage": "https://github.com/zhangying2345/koa-demo#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
+    "chokidar": "^3.0.2",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
     "ts-loader": "^6.0.4",
