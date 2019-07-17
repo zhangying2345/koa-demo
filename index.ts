@@ -1,18 +1,22 @@
-import { News } from './src/news/news';
-// const routes = require('./router.ts');
+import { inherits } from 'util';
 const Koa = require('koa');
 const Router = require('koa-router');
+import { RouterApi } from './router';
 
-const app = new Koa();
-const router = new Router();
-const news = new News();
+class Server {
+	constructor() {
+		this.app = new Koa();
+		this.router = new Router();
+		this.routerApi = new RouterApi();
+	}
 
-router.get('/', async (ctx, next) => {
-    const newsBaiDu = await news.getNews();
-    console.log(newsBaiDu);
-    
-    ctx.body = newsBaiDu;
-});
+	run() {
+		this.app.use(this.routerApi.routes());
+		this.app.listen(3000);
+	}
+	private app;
+	private router;
+	private routerApi;
+}
 
-app.use(router.routes());
-app.listen(3000);
+new Server().run();
