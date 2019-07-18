@@ -17,8 +17,7 @@ export class News {
         .then(strHtml => {
             var $=cheerio.load(strHtml);
             $("#channel-all li").each((iten,i)=>{
-                console.log($(i
-                ).text());
+                console.log($(i).text());
                 results.push($(i).text());
             });
             return results;

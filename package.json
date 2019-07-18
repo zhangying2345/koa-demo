@@ -20,15 +20,19 @@
   },
   "homepage": "https://github.com/zhangying2345/koa-demo#readme",
   "dependencies": {
+    "@types/node": "^12.6.8",
     "cheerio": "^1.0.0-rc.3",
     "chokidar": "^3.0.2",
+    "inversify": "^5.0.1",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
     "node-fetch": "^2.6.0",
+    "reflect-metadata": "^0.1.13",
     "webpack-cli": "^3.3.6",
     "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
+    "@types/webpack-env": "^1.14.0",
     "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3",
