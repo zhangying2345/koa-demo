@@ -1,11 +1,16 @@
+import { myContainer } from './ioc/inversify.config';
+import { TYPES } from "./ioc/types";
+import { NewsInterface } from "./ioc/interface";
+
 const Router = require('koa-router');
-import { News } from './src/news/news';
+// import { News } from './src/news/news';
 
 export class RouterApi {
 
   constructor() {
     this.router = new Router;
-    this.news = new News();
+    // this.news = new News();
+    this.news = myContainer.get<NewsInterface>(TYPES.NewsInterface);
     this.init();
   }
 
@@ -20,7 +25,7 @@ export class RouterApi {
   private newsHander = async (ctx, next) => {
     const newsBaiDu = await this.news.getNews();
     console.log(newsBaiDu);
-  
+
     ctx.body = {
       status: 200,
       message: 'OK',
