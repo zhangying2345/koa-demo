@@ -11,6 +11,7 @@ class Server {
 		this.app.use(this.routerApi.routes());
 		this.app.listen(3000);
 	}
+	// console.log('pid:', process.pid);
 	private app;
 	private routerApi;
 }

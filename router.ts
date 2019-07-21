@@ -19,7 +19,8 @@ export class RouterApi {
   }
 
   private init() {
-    this.router.get('/news', this.newsHander)
+    this.router.get('/news', this.newsHander);
+    this.router.get('/breakingNews', this.breakingNewsHander);
   }
 
   private newsHander = async (ctx, next) => {
@@ -30,6 +31,17 @@ export class RouterApi {
       status: 200,
       message: 'OK',
       body: newsBaiDu
+    };
+  }
+
+  private breakingNewsHander = async (ctx, next) => {
+    const breakingNews = await this.news.breakingNews();
+    console.log(breakingNews);
+
+    ctx.body = {
+      status: 200,
+      message: 'OK',
+      body: breakingNews
     };
   }
   private router;
