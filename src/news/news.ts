@@ -6,7 +6,6 @@ const fetch = require('node-fetch');
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
 import { NewsInterface } from "../../ioc/interface";
-import { TYPES } from "../../ioc/types";
 
 // Trailing Spaces
 @injectable()
@@ -31,14 +30,14 @@ export class News implements NewsInterface {
   }
 
   breakingNews() {
-    const results = any[];
+    const results: any[] = [];
     const url = 'http://news.baidu.com/';
     return fetch(url)
       .then(res => res.text())
       .then(strHtml => {
         var $ = cheerio.load(strHtml);
         $(".hotnews li").each((i, item) => {
-          // const tempHref = $(item).find('a').attr('href'));
+          let tempHref = $(item).find('a').attr('href');
           let context = $(item).text();
           context = context.replace(/\n/g, '');
           results.push(
@@ -47,9 +46,13 @@ export class News implements NewsInterface {
             url: tempHref
           });
         });
-        // const href = $(".hotnews li a").attr('href');
-        // const info = $
         return results;
       })
+  }
+
+  carousel() {
+    const results: any[] = [];
+    const url = 'http://news.baidu.com/';
+    
   }
 }

@@ -9,7 +9,6 @@ export class RouterApi {
 
   constructor() {
     this.router = new Router;
-    // this.news = new News();
     this.news = myContainer.get<NewsInterface>(TYPES.NewsInterface);
     this.init();
   }
@@ -21,6 +20,7 @@ export class RouterApi {
   private init() {
     this.router.get('/news', this.newsHander);
     this.router.get('/breakingNews', this.breakingNewsHander);
+    this.router.get('/carousel', this.carouselHander);
   }
 
   private newsHander = async (ctx, next) => {
@@ -42,6 +42,17 @@ export class RouterApi {
       status: 200,
       message: 'OK',
       body: breakingNews
+    };
+  }
+
+  private carouselHander = async(ctx, next) => {
+    const carousel = await this.news.carousel();
+    console.log(carousel);
+
+    ctx.body = {
+      status: 200,
+      message: 'OK',
+      body: carousel
     };
   }
   private router;
