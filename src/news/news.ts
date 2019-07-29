@@ -30,14 +30,14 @@ export class News implements NewsInterface {
   }
 
   breakingNews() {
-    const results: any[] = [];
+    let results: any[];
     const url = 'http://news.baidu.com/';
     return fetch(url)
       .then(res => res.text())
       .then(strHtml => {
         var $ = cheerio.load(strHtml);
         $(".hotnews li").each((i, item) => {
-          let tempHref = $(item).find('a').attr('href');
+          const tempHref = $(item).find('a').attr('href');
           let context = $(item).text();
           context = context.replace(/\n/g, '');
           results.push(
@@ -46,6 +46,9 @@ export class News implements NewsInterface {
             url: tempHref
           });
         });
+        console.log('zhangying->111');
+        // const href = $(".hotnews li a").attr('href');
+        // const info = $
         return results;
       })
   }
